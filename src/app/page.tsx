@@ -1,65 +1,153 @@
-import Image from "next/image";
+"use client";
+
+import { useState, useEffect, useMemo, useRef } from "react";
+import { handleUpload, Transaction } from "@/lib/handleUpload";
+import { CategorySummary } from "@/types/transaction";
+import { 
+  groupByCategory, 
+  sortCategories, 
+  filterCategories, 
+  SortOrder 
+} from "@/utils/categoryUtils";
+import { FileUpload } from "@/components/ui/FileUpload";
+import { SearchInput } from "@/components/ui/SearchInput";
+import { SortSelect } from "@/components/ui/SortSelect";
+import { SummaryStats } from "@/components/SummaryStats";
+import { CategoryList } from "@/components/CategoryList";
+import { TransactionModal } from "@/components/TransactionModal";
+import { EmptyState } from "@/components/EmptyState";
 
 export default function Home() {
+  const [transactions, setTransactions] = useState<Transaction[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState("");
+  const [search, setSearch] = useState("");
+  const [sortOrder, setSortOrder] = useState<SortOrder>("highest");
+  const [selectedCategory, setSelectedCategory] = useState<CategorySummary | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  // Load from localStorage on mount
+  useEffect(() => {
+    const saved = localStorage.getItem("transactions");
+    if (saved) {
+      setTransactions(JSON.parse(saved));
+    }
+  }, []);
+
+  // Compute categories with search and sort
+  const categories = useMemo(() => {
+    const grouped = groupByCategory(transactions);
+    const filtered = filterCategories(grouped, search);
+    return sortCategories(filtered, sortOrder);
+  }, [transactions, search, sortOrder]);
+
+  // Compute totals
+  const totals = useMemo(() => {
+    let expenses = 0;
+    let income = 0;
+    for (const t of transactions) {
+      if (t.lost) expenses += t.lost;
+      if (t.gained) income += t.gained;
+    }
+    return { expenses, income };
+  }, [transactions]);
+
+  // Handle file upload
+  const onFileSelect = async (file: File) => {
+    await handleUpload(file, setTransactions, setStatus, setLoading);
+  };
+
+  // Handle manual category change
+  const handleCategoryChange = (description: string, newCategory: string) => {
+    setTransactions((prev) => {
+      const updated = prev.map((t) =>
+        t.description === description ? { ...t, category: newCategory } : t
+      );
+      // Save to localStorage
+      localStorage.setItem("transactions", JSON.stringify(updated));
+      // Update category cache
+      import("@/lib/categoryCache").then(({ storeCategories }) => {
+        storeCategories([{ description, category: newCategory }]);
+      });
+      return updated;
+    });
+    // Close modal to refresh the view
+    setSelectedCategory(null);
+  };
+
+  const triggerUpload = () => fileInputRef.current?.click();
+
+  const hasData = transactions.length > 0;
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="min-h-screen bg-gray-950">
+      {/* Header */}
+      <header className="sticky top-0 z-40 bg-gray-950/80 backdrop-blur-lg border-b border-gray-800">
+        <div className="max-w-3xl mx-auto px-4 py-4">
+          <div className="flex items-center justify-between">
+            <h1 className="text-xl font-bold text-white">Finance Tracker</h1>
+            <FileUpload onFileSelect={onFileSelect} loading={loading} />
+          </div>
+          
+          {/* Status Message */}
+          {status && (
+            <p className="mt-2 text-sm text-gray-400">{status}</p>
+          )}
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+      </header>
+
+      {/* Main Content */}
+      <main className="max-w-3xl mx-auto px-4 py-6">
+        {!hasData ? (
+          <EmptyState onUpload={triggerUpload} />
+        ) : (
+          <div className="space-y-6">
+            {/* Summary Stats */}
+            <SummaryStats
+              totalExpenses={totals.expenses}
+              totalIncome={totals.income}
+              categoryCount={categories.length}
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+
+            {/* Controls */}
+            <div className="flex flex-col sm:flex-row gap-3">
+              <div className="flex-1">
+                <SearchInput
+                  value={search}
+                  onChange={setSearch}
+                  placeholder="Search categories..."
+                />
+              </div>
+              <SortSelect value={sortOrder} onChange={setSortOrder} />
+            </div>
+
+            {/* Category List */}
+            <CategoryList
+              categories={categories}
+              onCategoryClick={setSelectedCategory}
+            />
+          </div>
+        )}
       </main>
+
+      {/* Transaction Detail Modal */}
+      <TransactionModal
+        category={selectedCategory}
+        onClose={() => setSelectedCategory(null)}
+        onCategoryChange={handleCategoryChange}
+      />
+
+      {/* Hidden file input for EmptyState */}
+      <input
+        ref={fileInputRef}
+        type="file"
+        accept=".csv"
+        className="hidden"
+        onChange={(e) => {
+          const file = e.target.files?.[0];
+          if (file) onFileSelect(file);
+        }}
+      />
     </div>
   );
 }

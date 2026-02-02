@@ -80,18 +80,19 @@ export default function Home() {
   const hasData = transactions.length > 0;
 
   return (
-    <div className="min-h-screen bg-gray-950">
+    <div className="min-h-screen" style={{ background: 'var(--background)' }}>
       {/* Header */}
-      <header className="sticky top-0 z-40 bg-gray-950/80 backdrop-blur-lg border-b border-gray-800">
+      <header className="sticky top-0 z-40 bg-background/80 backdrop-blur-lg border-b border-border-primary">
         <div className="max-w-3xl mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <h1 className="text-xl font-bold text-white">Finance Tracker</h1>
+            <h1 className="text-xl font-bold text-text-primary">Fincheck</h1>
+            
             <FileUpload onFileSelect={onFileSelect} loading={loading} />
           </div>
           
           {/* Status Message */}
           {status && (
-            <p className="mt-2 text-sm text-gray-400">{status}</p>
+            <p className="mt-2 text-sm text-text-secondary">{status}</p>
           )}
         </div>
       </header>

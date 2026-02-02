@@ -23,12 +23,12 @@ export function TransactionList({ transactions, onCategoryChange }: TransactionL
       {transactions.map((t, i) => (
         <div
           key={i}
-          className="p-3 bg-gray-800 rounded-lg border border-gray-700"
+          className="p-3 bg-surface-primary rounded-lg border border-border-primary"
         >
           <div className="flex items-start justify-between gap-3">
             <div className="min-w-0 flex-1">
-              <p className="text-white font-medium truncate">{t.description}</p>
-              <p className="text-sm text-gray-400 mt-0.5">{t.date}</p>
+              <p className="text-text-primary font-medium truncate">{t.description}</p>
+              <p className="text-sm text-text-secondary mt-0.5">{t.date}</p>
               
               {editingIndex === i ? (
                 <CategoryEditSelect
@@ -38,11 +38,11 @@ export function TransactionList({ transactions, onCategoryChange }: TransactionL
                 />
               ) : (
                 <div className="flex items-center gap-2 mt-1">
-                  <span className="text-xs text-blue-400">{t.category || "Uncategorized"}</span>
+                  {/* <span className="text-xs text-blue-400">{t.category || "Uncategorized"}</span> */}
                   {onCategoryChange && (
                     <button
                       onClick={() => setEditingIndex(i)}
-                      className="text-xs text-gray-500 hover:text-white transition-colors"
+                      className="text-xs text-primary-focus hover:text-text-primary transition-colors"
                     >
                       Edit
                     </button>
@@ -52,15 +52,15 @@ export function TransactionList({ transactions, onCategoryChange }: TransactionL
             </div>
             <div className="text-right shrink-0">
               {t.lost ? (
-                <span className="text-red-400 font-medium">
+                <span className="text-danger font-medium">
                   -{formatCurrency(t.lost)}
                 </span>
               ) : t.gained ? (
-                <span className="text-green-400 font-medium">
+                <span className="text-success font-medium">
                   +{formatCurrency(t.gained)}
                 </span>
               ) : (
-                <span className="text-gray-400">-</span>
+                <span className="text-text-secondary">-</span>
               )}
             </div>
           </div>

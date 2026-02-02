@@ -1,8 +1,105 @@
 @import "tailwindcss";
 
+@theme {
+  /* Extend Tailwind with our custom colors */
+  --color-surface-primary: var(--surface-primary);
+  --color-surface-secondary: var(--surface-secondary);
+  --color-surface-hover: var(--surface-hover);
+  --color-border-primary: var(--border-primary);
+  --color-border-secondary: var(--border-secondary);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-focus: var(--primary-focus);
+  --color-success: var(--success);
+  --color-danger: var(--danger);
+  --color-disabled: var(--disabled);
+}
+
 :root {
-  --background: #030712;
-  --foreground: #f9fafb;
+  /* 
+    COLOR PALETTE GUIDE
+    ==================
+    To change the app's colors, simply modify the hex values below.
+    All components will automatically update!
+    
+    Quick color change tips:
+    - For a lighter theme: lighten --background, --surface-*, --border-*
+    - For different accent: change --primary, --primary-hover, --primary-focus
+    - For custom expense/income colors: change --danger and --success
+  */
+  
+  /* Base colors */
+  --background: #030712;           /* Main app background (dark navy) */
+  --foreground: #f9fafb;           /* Main text color (near white) */
+  
+  /* Surface colors */
+  --surface-primary: #1f2937;      /* gray-800 */
+  --surface-secondary: #111827;    /* gray-900 */
+  --surface-hover: #374151;        /* gray-700 */
+  
+  /* Border colors */
+  --border-primary: #374151;       /* gray-700 */
+  --border-secondary: #4b5563;     /* gray-600 */
+  
+  /* Text colors */
+  --text-primary: #ffffff;         /* white */
+  --text-secondary: #9ca3af;       /* gray-400 */
+  --text-muted: #6b7280;           /* gray-500 */
+  
+  /* Accent colors */
+  --primary: #2563eb;              /* blue-600 */
+  --primary-hover: #1d4ed8;        /* blue-700 */
+  --primary-focus: #3b82f6;        /* blue-500 */
+  
+  /* Semantic colors */
+  --success: #09ff63;              /* green-400 */
+  --danger: #ec3e3e;               /* red-400 */
+  
+  /* Disabled state */
+  --disabled: #4b5563;             /* gray-600 */
+  
+  /* Overlay */
+  --overlay: rgba(0, 0, 0, 0.6);
+
+  
+/************************* Duplicates ***************************/
+
+
+
+  --background: #000000;           /* Main app background (dark navy) */
+  --foreground: #f9fafb;           /* Main text color (near white) */
+  
+  /* Surface colors */
+  --surface-primary: #013911;      
+  --surface-secondary: #111827;    
+  --surface-hover: #048428;        
+  
+  /* Border colors */
+  --border-primary: #1b1f19;       
+  --border-secondary: #000000;     
+  
+  /* Text colors */
+  --text-primary: #ffffff;         
+  --text-secondary: #9ca3af;       
+  --text-muted: #6b7280;           
+  
+  /* Accent colors */
+  --primary: #28eb25;              
+  --primary-hover: #1d4ed8;        
+  --primary-focus: #3b82f6;        
+  
+  /* Semantic colors */
+  --success: #09ff63;              
+  --danger: #561d0d;               
+  
+  /* Disabled state */
+  --disabled: #4b5563;             
+  
+  /* Overlay */
+  --overlay: rgba(0, 0, 0, 0.6);
 }
 
 body {

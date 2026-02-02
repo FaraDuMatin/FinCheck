@@ -7,9 +7,9 @@ interface EmptyStateProps {
 export function EmptyState({ onUpload }: EmptyStateProps) {
   return (
     <div className="flex flex-col items-center justify-center py-16 px-4">
-      <div className="w-16 h-16 mb-4 rounded-full bg-gray-800 flex items-center justify-center">
+      <div className="w-16 h-16 mb-4 rounded-full bg-surface-primary flex items-center justify-center">
         <svg
-          className="w-8 h-8 text-gray-500"
+          className="w-8 h-8 text-text-muted"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -22,13 +22,13 @@ export function EmptyState({ onUpload }: EmptyStateProps) {
           />
         </svg>
       </div>
-      <h2 className="text-xl font-semibold text-white mb-2">No transactions yet</h2>
-      <p className="text-gray-400 text-center mb-6 max-w-sm">
+      <h2 className="text-xl font-semibold text-text-primary mb-2">No transactions yet</h2>
+      <p className="text-text-secondary text-center mb-6 max-w-sm">
         Upload your bank statement CSV to see your spending breakdown by category
       </p>
       <button
         onClick={onUpload}
-        className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors"
+        className="px-6 py-3 bg-primary hover:bg-primary-hover text-text-primary font-medium rounded-lg transition-colors"
       >
         Upload CSV
       </button>

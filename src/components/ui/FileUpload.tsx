@@ -30,7 +30,7 @@ export function FileUpload({ onFileSelect, loading, accept = ".csv" }: FileUploa
       <button
         onClick={handleClick}
         disabled={loading}
-        className="flex items-center gap-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-600 disabled:cursor-not-allowed text-white font-medium rounded-lg transition-colors"
+        className="flex items-center gap-2 px-5 py-2.5 bg-surface-primary hover:bg-surface-hover disabled:bg-disabled disabled:cursor-not-allowed text-text-primary font-medium rounded-lg transition-colors"
       >
         {loading ? (
           <>
@@ -42,8 +42,8 @@ export function FileUpload({ onFileSelect, loading, accept = ".csv" }: FileUploa
           </>
         ) : (
           <>
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+            <svg className="w-4 h-4" viewBox="0 0 140 140" aria-hidden="true">
+              <path fillRule="evenodd" fill="currentColor" d="M10 90a10 10 0 0 1 10 10v15a5 5 0 0 0 5 5h90a5 5 0 0 0 5-5v-15a10 10 0 0 1 10-10 10 10 0 0 1 10 10v20c0 11-9 20-20 20H20c-11 0-20-9-20-20v-20a10 10 0 0 1 10-10zM70.5 1.3c2.6 0 5.2 1 7.2 3l41.7 41.6a10 10 0 1 1-14.1 14.2L79.9 34.7v61.6c0 5.4-4.3 9.8-9.7 9.8a9.8 9.8 0 0 1-9.8-9.8V35.4L35.7 60.1a10 10 0 0 1-14.1-14.2L63.3 4.2c2-2 4.6-3 7.2-3z" />
             </svg>
             Upload CSV
           </>

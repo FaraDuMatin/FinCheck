@@ -29,14 +29,14 @@ interface StatCardProps {
 
 function StatCard({ label, value, variant }: StatCardProps) {
   const colorClass = {
-    income: "text-green-400",
-    expense: "text-red-400",
-    neutral: "text-white",
+    income: "text-success",
+    expense: "text-danger",
+    neutral: "text-text-primary",
   }[variant];
 
   return (
-    <div className="p-4 bg-gray-800 rounded-xl border border-gray-700">
-      <p className="text-xs sm:text-sm text-gray-400 mb-1">{label}</p>
+    <div className="p-4 bg-surface-primary rounded-xl border border-border-primary">
+      <p className="text-xs sm:text-sm text-text-primary mb-1">{label}</p>
       <p className={`text-lg sm:text-xl font-bold ${colorClass} truncate`}>{value}</p>
     </div>
   );

@@ -28,16 +28,16 @@ export function TransactionModal({ category, onClose, onCategoryChange }: Transa
       title={category.category}
     >
       {/* Summary Header */}
-      <div className="mb-4 p-3 bg-gray-800/50 rounded-lg border border-gray-700">
+      <div className="mb-4 p-3 bg-surface-primary/50 rounded-lg border border-border-primary">
         <div className="flex items-center justify-between">
-          <span className="text-gray-400">Total Spent</span>
-          <span className="text-xl font-bold text-red-400">
+          <span className="text-text-secondary">Total Spent</span>
+          <span className="text-xl font-bold text-danger">
             {formatCurrency(category.total)}
           </span>
         </div>
         <div className="flex items-center justify-between mt-1">
-          <span className="text-gray-400">Transactions</span>
-          <span className="text-white font-medium">{category.count}</span>
+          <span className="text-text-secondary">Transactions</span>
+          <span className="text-text-primary font-medium">{category.count}</span>
         </div>
       </div>
 

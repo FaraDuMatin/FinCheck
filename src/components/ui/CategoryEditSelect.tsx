@@ -9,12 +9,12 @@ interface CategoryEditSelectProps {
 }
 
 const CATEGORIES = [
-  "Salary/Income", "Government Benefits", "Groceries", "Restaurants", "Fast Food", 
-  "Coffee/Café", "Gas/Fuel", "Public Transit", "Parking", "Rent/Mortgage", 
-  "Utilities", "Internet/Phone", "Healthcare/Pharmacy", "Insurance", "Clothing", 
-  "Electronics", "Entertainment/Gaming", "Subscriptions", "Gym/Fitness", 
-  "Personal Care", "Pet Expenses", "Education", "Travel", "Bank Fees", 
-  "Loan Payment", "Savings/Investment", "Gifts", "Donations", "Transfers", "Others"
+  "Bank Fees", "Clothing", "Coffee/Café", "Donations", "Education", "Electronics", 
+  "Entertainment/Gaming", "Fast Food", "Gas/Fuel", "Gifts", "Government Benefits", 
+  "Groceries", "Gym/Fitness", "Healthcare/Pharmacy", "Insurance", "Internet/Phone",
+  "Loan Payment", "Others", "Parking", "Personal Care", "Pet Expenses", "Public Transit",
+  "Rent/Mortgage", "Restaurants", "Salary/Income", "Savings/Investment", "Subscriptions", 
+  "Transfers", "Travel", "Utilities"
 ];
 
 export function CategoryEditSelect({ currentCategory, onSave, onCancel }: CategoryEditSelectProps) {
@@ -33,7 +33,7 @@ export function CategoryEditSelect({ currentCategory, onSave, onCancel }: Catego
       <select
         value={selected}
         onChange={(e) => setSelected(e.target.value)}
-        className="flex-1 px-3 py-1.5 bg-gray-700 border border-gray-600 rounded text-sm text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="flex-1 px-3 py-1.5 bg-surface-hover border border-border-secondary rounded text-sm text-text-primary focus:outline-none focus:ring-2 focus:ring-primary-focus"
         autoFocus
       >
         {CATEGORIES.map((cat) => (
@@ -44,13 +44,13 @@ export function CategoryEditSelect({ currentCategory, onSave, onCancel }: Catego
       </select>
       <button
         onClick={handleSave}
-        className="px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded transition-colors"
+        className="px-3 py-1.5 bg-primary hover:bg-primary-hover text-text-primary text-sm font-medium rounded transition-colors"
       >
         Save
       </button>
       <button
         onClick={onCancel}
-        className="px-3 py-1.5 bg-gray-700 hover:bg-gray-600 text-white text-sm font-medium rounded transition-colors"
+        className="px-3 py-1.5 bg-surface-hover hover:bg-border-secondary text-text-primary text-sm font-medium rounded transition-colors"
       >
         Cancel
       </button>

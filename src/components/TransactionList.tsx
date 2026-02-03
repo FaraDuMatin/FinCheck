@@ -23,7 +23,7 @@ export function TransactionList({ transactions, onCategoryChange }: TransactionL
       {transactions.map((t, i) => (
         <div
           key={i}
-          className="p-3 bg-surface-primary rounded-lg border border-border-primary"
+          className="p-3 bg-gradient-to-r from-surface-primary/60 to-surface-secondary/60 rounded-lg border border-border-primary/70 shadow-sm hover:shadow-md hover:border-border-secondary transition-all"
         >
           <div className="flex items-start justify-between gap-3">
             <div className="min-w-0 flex-1">
@@ -42,7 +42,7 @@ export function TransactionList({ transactions, onCategoryChange }: TransactionL
                   {onCategoryChange && (
                     <button
                       onClick={() => setEditingIndex(i)}
-                      className="text-xs text-primary-focus hover:text-text-primary transition-colors"
+                      className="text-xs text-blue-500 hover:text-white transition-colors"
                     >
                       Edit
                     </button>
@@ -60,7 +60,7 @@ export function TransactionList({ transactions, onCategoryChange }: TransactionL
                   +{formatCurrency(t.gained)}
                 </span>
               ) : (
-                <span className="text-text-secondary">-</span>
+                <span className="text-text-muted">-</span>
               )}
             </div>
           </div>

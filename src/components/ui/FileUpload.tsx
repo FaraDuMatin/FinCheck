@@ -30,7 +30,7 @@ export function FileUpload({ onFileSelect, loading, accept = ".csv" }: FileUploa
       <button
         onClick={handleClick}
         disabled={loading}
-        className="flex items-center gap-2 px-5 py-2.5 bg-surface-primary hover:bg-surface-hover disabled:bg-disabled disabled:cursor-not-allowed text-text-primary font-medium rounded-lg transition-colors"
+        className="flex items-center gap-2 px-5 py-2.5 bg-linear-to-br from-primary to-primary/10 shadow-primary/30  hover:bg-primary-hover disabled:bg-disabled disabled:cursor-not-allowed text-text-primary font-medium rounded-lg transition-all shadow-md hover:shadow-lg hover:scale-105"
       >
         {loading ? (
           <>

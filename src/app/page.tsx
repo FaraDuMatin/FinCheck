@@ -82,11 +82,10 @@ export default function Home() {
   return (
     <div className="min-h-screen" style={{ background: 'var(--background)' }}>
       {/* Header */}
-      <header className="sticky top-0 z-40 bg-background/80 backdrop-blur-lg border-b border-border-primary">
+      <header className="sticky top-0 z-40 bg-gradient-to-r from-background/90 via-surface-secondary/90 to-background/90 backdrop-blur-lg border-b border-border-primary/80 shadow-lg">
         <div className="max-w-3xl mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <h1 className="text-xl font-bold text-text-primary">Fincheck</h1>
-            
+            <h1 className="text-xl font-bold text-text-primary">Finance Tracker</h1>
             <FileUpload onFileSelect={onFileSelect} loading={loading} />
           </div>
           
@@ -107,7 +106,6 @@ export default function Home() {
             <SummaryStats
               totalExpenses={totals.expenses}
               totalIncome={totals.income}
-              categoryCount={categories.length}
             />
 
             {/* Controls */}

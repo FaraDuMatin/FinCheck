@@ -12,7 +12,7 @@ export function CategoryCard({ category, onClick }: CategoryCardProps) {
   return (
     <button
       onClick={onClick}
-      className="w-full p-4 bg-surface-primary hover:bg-surface-hover border border-border-primary hover:border-border-secondary rounded-xl transition-all text-left group"
+      className="w-full p-4 bg-linear-to-r from-surface-primary/80 to-surface-primary/30 hover:from-surface-hover/60 hover:to-surface-primary/60 border border-border-primary/80 hover:border-border-secondary rounded-xl transition-all text-left group shadow-md hover:shadow-lg hover:scale-[1.01]"
     >
       <div className="flex items-center justify-between">
         <div className="min-w-0 flex-1">

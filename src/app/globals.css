@@ -74,11 +74,11 @@
   
   /* Surface colors */
   --surface-primary: #013911;      
-  --surface-secondary: #111827;    
+  --surface-secondary: #013911;    
   --surface-hover: #048428;        
   
   /* Border colors */
-  --border-primary: #1b1f19;       
+  --border-primary: #393b39;       
   --border-secondary: #000000;     
   
   /* Text colors */
@@ -87,13 +87,13 @@
   --text-muted: #6b7280;           
   
   /* Accent colors */
-  --primary: #28eb25;              
-  --primary-hover: #1d4ed8;        
-  --primary-focus: #3b82f6;        
+  --primary: #064905;              
+  --primary-hover: #1dd823;        
+  --primary-focus: #1dd823;        
   
   /* Semantic colors */
   --success: #09ff63;              
-  --danger: #561d0d;               
+  --danger: #ff6b6b;               
   
   /* Disabled state */
   --disabled: #4b5563;             

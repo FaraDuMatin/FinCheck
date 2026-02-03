@@ -7,7 +7,7 @@ interface EmptyStateProps {
 export function EmptyState({ onUpload }: EmptyStateProps) {
   return (
     <div className="flex flex-col items-center justify-center py-16 px-4">
-      <div className="w-16 h-16 mb-4 rounded-full bg-surface-primary flex items-center justify-center">
+      <div className="w-16 h-16 mb-4 rounded-full bg-surface-primary border border-border-primary shadow-md flex items-center justify-center">
         <svg
           className="w-8 h-8 text-text-muted"
           fill="none"
@@ -28,7 +28,7 @@ export function EmptyState({ onUpload }: EmptyStateProps) {
       </p>
       <button
         onClick={onUpload}
-        className="px-6 py-3 bg-primary hover:bg-primary-hover text-text-primary font-medium rounded-lg transition-colors"
+        className="px-6 py-3 bg-primary hover:bg-primary-hover text-text-primary font-medium rounded-lg transition-all shadow-md hover:shadow-lg hover:scale-105"
       >
         Upload CSV
       </button>

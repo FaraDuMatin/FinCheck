@@ -40,7 +40,7 @@ export function Modal({ isOpen, onClose, title, children }: ModalProps) {
 
       {/* Modal Content */}
       <div
-        className="relative w-full sm:max-w-2xl max-h-[85vh] bg-gradient-to-b from-surface-secondary to-background rounded-t-2xl sm:rounded-2xl border border-border-primary/80 shadow-2xl flex flex-col animate-slide-up sm:animate-fade-in"
+        className="relative w-full sm:max-w-2xl max-h-[85vh] bg-black bg-transparent rounded-t-2xl sm:rounded-2xl border border-border-primary/80 shadow-2xl flex flex-col animate-slide-up sm:animate-fade-in"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}

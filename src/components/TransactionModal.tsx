@@ -28,7 +28,7 @@ export function TransactionModal({ category, onClose, onCategoryChange }: Transa
       title={category.category}
     >
       {/* Summary Header */}
-      <div className="mb-4 p-3 bg-surface-primary/50 rounded-lg border border-border-primary">
+      <div className="mb-4 p-3 bg-gradient-to-r from-surface-primary/60 to-surface-primary/10 rounded-lg border border-border-primary">
         <div className="flex items-center justify-between">
           <span className="text-text-secondary">Total Spent</span>
           <span className="text-xl font-bold text-danger">

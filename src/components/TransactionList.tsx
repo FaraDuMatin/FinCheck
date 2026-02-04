@@ -23,7 +23,7 @@ export function TransactionList({ transactions, onCategoryChange }: TransactionL
       {transactions.map((t, i) => (
         <div
           key={i}
-          className="p-3 bg-gradient-to-r from-surface-primary/60 to-surface-secondary/60 rounded-lg border border-border-primary/70 shadow-sm hover:shadow-md hover:border-border-secondary transition-all"
+          className="p-3 bg-gradient-to-r from-surface-primary/60 to-surface-primary/10 rounded-lg border border-border-primary/70 shadow-sm hover:shadow-md hover:border-border-secondary transition-all"
         >
           <div className="flex items-start justify-between gap-3">
             <div className="min-w-0 flex-1">

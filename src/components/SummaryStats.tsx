@@ -34,7 +34,7 @@ function StatCard({ label, value, variant }: StatCardProps) {
 
   return (
     <div className={`p-4 rounded-xl border shadow-md hover:shadow-lg hover:scale-[1.02] transition-all duration-200 ${styles}`}>
-      <p className="text-xs sm:text-sm text-text-secondary mb-1">{label}</p>
+      <p className="text-xs sm:text-sm text-text-primary mb-1">{label}</p>
       <p className={`text-lg sm:text-xl font-bold truncate ${variant === "income" ? "text-success" : variant === "expense" ? "text-danger" : "text-text-primary"}`}>{value}</p>
     </div>
   );

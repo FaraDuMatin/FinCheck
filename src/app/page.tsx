@@ -85,7 +85,7 @@ export default function Home() {
       <header className="sticky top-0 z-40 bg-gradient-to-r from-background/90 via-surface-secondary/90 to-background/90 backdrop-blur-lg border-b border-border-primary/80 shadow-lg">
         <div className="max-w-3xl mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <h1 className="text-xl font-bold text-text-primary">Finance Tracker</h1>
+            <h1 className="text-xl font-bold text-text-primary">FinCheck</h1>
             <FileUpload onFileSelect={onFileSelect} loading={loading} />
           </div>
           

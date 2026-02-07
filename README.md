@@ -1,5 +1,5 @@
 # Transaction Categorizer API
+A lightweight service that analyzes uploaded transactions and automatically assigns categories to simplify expense tracking. Exposes a clean API for the React.js frontend and supports manual edits, CSV uploads, and summary statistics.
 
-A FastAPI backend that uses Google Gemini AI to automatically categorize financial transactions.
+### Website Link : https://finchecks.vercel.app/
 
-### Website Link : 
